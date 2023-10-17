@@ -1,0 +1,201 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://drawLine.gd" type="Script" id=1]
+[ext_resource path="res://Assets/bed.png" type="Texture" id=3]
+[ext_resource path="res://Script/AffichagePosition.gd" type="Script" id=4]
+[ext_resource path="res://Script/CheckCollision.gd" type="Script" id=5]
+[ext_resource path="res://Script/FollowMouse.gd" type="Script" id=6]
+[ext_resource path="res://Script/CursorCollision.gd" type="Script" id=7]
+[ext_resource path="res://Script/outside.gd" type="Script" id=9]
+[ext_resource path="res://Script/spawnChats.gd" type="Script" id=10]
+[ext_resource path="res://Script/Chrono.gd" type="Script" id=11]
+[ext_resource path="res://Script/Score.gd" type="Script" id=12]
+[ext_resource path="res://Script/StoreScore.gd" type="Script" id=13]
+[ext_resource path="res://Assets/sly_cooper_font_2.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Sounds/Success.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/MaleCatMeow.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/Time.wav" type="AudioStream" id=17]
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = ExtResource( 14 )
+
+[sub_resource type="Theme" id=7]
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 222, 249 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16.9978, 17.6196 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Lose" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 42, 36 )
+stream = ExtResource( 16 )
+volume_db = 8.0
+
+[node name="Miaou" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 42, 36 )
+stream = ExtResource( 15 )
+volume_db = 10.0
+
+[node name="Time" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 219, -22 )
+scale = Vector2( 1, 2.36 )
+stream = ExtResource( 17 )
+volume_db = 3.0
+autoplay = true
+
+[node name="AffichagePosition" type="Label" parent="."]
+margin_left = 23.0
+margin_top = 36.0
+margin_right = 207.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 6 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 798.0
+margin_top = 36.0
+margin_right = 982.0
+margin_bottom = 75.0
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
+text = "Score
+"
+script = ExtResource( 12 )
+
+[node name="Cursor" type="Area2D" parent="."]
+z_index = 2
+script = ExtResource( 6 )
+
+[node name="CursorHitBox" type="CollisionShape2D" parent="Cursor"]
+scale = Vector2( 2.5, 2.5 )
+z_index = 1
+shape = SubResource( 3 )
+script = ExtResource( 7 )
+
+[node name="CheckCollision" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 1
+width = 50.0
+default_color = Color( 0.168627, 0.0745098, 0.211765, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource( 1 )
+
+[node name="Bed" type="Sprite" parent="."]
+position = Vector2( -374.605, 299.086 )
+scale = Vector2( 0.49375, 0.486111 )
+texture = ExtResource( 3 )
+offset = Vector2( 1785.53, -69.0909 )
+
+[node name="SpawnArea" type="Area2D" parent="."]
+position = Vector2( 506, 298 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2( -6, -34 )
+shape = SubResource( 5 )
+
+[node name="Outside" type="Node2D" parent="."]
+position = Vector2( 57, 71 )
+scale = Vector2( 7.09342, 16.5347 )
+
+[node name="Wood" type="Sprite" parent="Outside"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Outside/Wood"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside/Wood/StaticBody2D"]
+position = Vector2( 8.31757, 13.5473 )
+shape = SubResource( 4 )
+
+[node name="Outside2" type="Node2D" parent="."]
+position = Vector2( 57, 71 )
+scale = Vector2( 7.09342, 16.5347 )
+
+[node name="Wood" type="Sprite" parent="Outside2"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Outside2/Wood"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside2/Wood/StaticBody2D"]
+position = Vector2( 116.728, 13.7287 )
+shape = SubResource( 4 )
+
+[node name="Outside3" type="Node2D" parent="."]
+position = Vector2( 57, 71 )
+scale = Vector2( 7.09342, 16.5347 )
+
+[node name="Wood" type="Sprite" parent="Outside3"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Outside3/Wood"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside3/Wood/StaticBody2D"]
+position = Vector2( 46.522, -22.3772 )
+shape = SubResource( 4 )
+
+[node name="Outside4" type="Node2D" parent="."]
+position = Vector2( 57, 71 )
+scale = Vector2( 7.09342, 16.5347 )
+
+[node name="Wood" type="Sprite" parent="Outside4"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Outside4/Wood"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside4/Wood/StaticBody2D"]
+position = Vector2( 82.0479, -22.3167 )
+shape = SubResource( 4 )
+
+[node name="Outside5" type="Node2D" parent="."]
+position = Vector2( 57, 71 )
+scale = Vector2( 7.09342, 16.5347 )
+
+[node name="Wood" type="Sprite" parent="Outside5"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Outside5/Wood"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside5/Wood/StaticBody2D"]
+position = Vector2( 46.663, 46.1454 )
+shape = SubResource( 4 )
+
+[node name="Outside6" type="Node2D" parent="."]
+position = Vector2( 57, 71 )
+scale = Vector2( 7.09342, 16.5347 )
+
+[node name="Wood" type="Sprite" parent="Outside6"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Outside6/Wood"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside6/Wood/StaticBody2D"]
+position = Vector2( 81.061, 46.1454 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+script = ExtResource( 11 )
+
+[node name="StoreScore" type="Node2D" parent="."]
+script = ExtResource( 13 )
+
+[connection signal="body_entered" from="Cursor" to="Outside/Wood/StaticBody2D" method="_on_Cursor_body_entered"]
+[connection signal="mouse_entered" from="Outside/Wood/StaticBody2D" to="Cursor" method="_on_StaticBody2D_mouse_entered"]
+[connection signal="mouse_entered" from="Outside2/Wood/StaticBody2D" to="Cursor" method="_on_StaticBody2D_mouse_entered"]
+[connection signal="mouse_entered" from="Outside3/Wood/StaticBody2D" to="Cursor" method="_on_StaticBody2D_mouse_entered"]
+[connection signal="mouse_entered" from="Outside4/Wood/StaticBody2D" to="Cursor" method="_on_StaticBody2D_mouse_entered"]
+[connection signal="mouse_entered" from="Outside5/Wood/StaticBody2D" to="Cursor" method="_on_StaticBody2D_mouse_entered"]
+[connection signal="mouse_entered" from="Outside6/Wood/StaticBody2D" to="Cursor" method="_on_StaticBody2D_mouse_entered"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]

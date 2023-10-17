@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/268795__brickfilmerin__cat-meow.mp3-3e19027c4d858d60e2a67e37e5a5bbab.mp3str"
+
+[deps]
+
+source_file="res://Sounds/268795__brickfilmerin__cat-meow.mp3"
+dest_files=[ "res://.import/268795__brickfilmerin__cat-meow.mp3-3e19027c4d858d60e2a67e37e5a5bbab.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
